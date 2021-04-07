@@ -1,0 +1,3 @@
+PyResourcePool==0.1.12
+selenium==3.141.0
+numpy==1.19.5

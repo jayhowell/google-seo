@@ -1,0 +1,36 @@
+
+    <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table, th, td {
+    border: 1px solid black;
+}
+th {
+    cursor: pointer;
+}
+    </style>
+    <script src="/scripts/snippet-javascript-console.min.js?v=1"></script>
+</head>
+<body>
+    <table>
+    <tr><th>KeyWords</th><th>Number In title</th><th>Number in URL</th><th>Score</th><th>Proxy Server</th></tr>
+    <tr><td>all season feeders</td><td><a href='https://www.google.com/search?q=allintitle:all season feeders'>1700</a</td><td><a href='https://www.google.com/search?q=allinurl:all season feeders'>314</a></td><td>0</td><td>104.129.40.131</td></tr><tr><td>american hunter feeder</td><td><a href='https://www.google.com/search?q=allintitle:american hunter feeder'>1700</a</td><td><a href='https://www.google.com/search?q=allinurl:american hunter feeder'>314</a></td><td>0</td><td>104.129.40.131</td></tr><tr><td>homemade deer feeder</td><td><a href='https://www.google.com/search?q=allintitle:homemade deer feeder'>1700</a</td><td><a href='https://www.google.com/search?q=allinurl:homemade deer feeder'>7690</a></td><td>0</td><td>102.165.52.86</td></tr><tr><td>gravity feeder</td><td><a href='https://www.google.com/search?q=allintitle:gravity feeder'>1700</a</td><td><a href='https://www.google.com/search?q=allinurl:gravity feeder'>314</a></td><td>0</td><td>104.129.40.131</td></tr><tr><td>wildgame innovations feeder</td><td><a href='https://www.google.com/search?q=allintitle:wildgame innovations feeder'>1700</a</td><td><a href='https://www.google.com/search?q=allinurl:wildgame innovations feeder'>7690</a></td><td>0</td><td>102.165.52.86</td></tr>
+</table>
+    <script type="text/javascript">
+        const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+
+const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+// do the work...
+document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+    const table = th.closest('table');
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+        .forEach(tr => table.appendChild(tr) );
+})));
+    </script>
+</body>
+</html>
