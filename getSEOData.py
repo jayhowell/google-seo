@@ -126,10 +126,14 @@ def keywordMessagePump():
     finally:
         html_file.close()
 
-proxyArray = populateArrayfromFile("proxies.txt")
-global abrowserPool #have to define a global so that we can access the pool in the callback
-abrowserPool = BrowserPool(maxInstances=5,proxyArray=proxyArray)
-keywordMessagePump()
+def main():
+    proxyArray = populateArrayfromFile("proxies.txt")
+    global abrowserPool #have to define a global so that we can access the pool in the callback
+    abrowserPool = BrowserPool(maxInstances=5,proxyArray=proxyArray)
+    keywordMessagePump()
+
+if __name__ == "__main__":
+    main()
 
 
 
